@@ -5,8 +5,15 @@ using BmiApp.Infrastructure.BmiCalculator;
 
 namespace BmiApp.Composition {
 
-
     public class ApplicationRoot : MonoBehaviour {
+
+        private void Start() {
+
+            var dataStore = new TemporaryHistoryDataStore() as IHistoryDataStore;
+
+
+
+        }
 
     }
 
