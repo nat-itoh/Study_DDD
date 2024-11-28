@@ -1,0 +1,18 @@
+{
+    "name": "Project.Composition",
+    "rootNamespace": "BmiApp.Composition",
+    "references": [
+        "GUID:60d24026939295745a2a89e3b302646f",
+        "GUID:a4e9485533551b84493f1611149c4581",
+        "GUID:de3bf74daa3629e4aaa57c306a862a14"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": false,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
