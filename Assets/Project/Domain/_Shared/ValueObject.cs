@@ -3,7 +3,7 @@ using System;
 // [REF]
 //  _: C#でドメイン駆動開発ValueObjectでプログラムの複雑さを取り除く https://anderson02.com/cs/ddd/ddd10/
 
-namespace BmiApp.Domain.ValueObjects {
+namespace BmiApp.Domain.Shared {
 
     /// <summary>
     /// ValueObjectの基底クラス．

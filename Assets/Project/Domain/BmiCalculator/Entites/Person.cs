@@ -1,7 +1,7 @@
 using System;
-using BmiApp.Domain.ValueObjects;
+using BmiApp.Domain.BmiCalculater.ValueObjects;
 
-namespace BmiApp.Domain.Eintities {
+namespace BmiApp.Domain.BmiCalculater.Eintities {
 
     public class Person {
 

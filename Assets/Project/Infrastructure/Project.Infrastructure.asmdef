@@ -1,7 +1,9 @@
 {
-    "name": "BmiApp.Domain",
-    "rootNamespace": "BmiApp.Domain",
-    "references": [],
+    "name": "Project.Infrastructure",
+    "rootNamespace": "BmiApp.Infrastructure",
+    "references": [
+        "GUID:60d24026939295745a2a89e3b302646f"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
