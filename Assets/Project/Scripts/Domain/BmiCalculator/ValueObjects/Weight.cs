@@ -10,12 +10,20 @@ namespace BmiApp.Domain.BmiCalculater.ValueObjects {
 
         public float Value { get; }
 
+        /// <summary>
+        /// コンストラクタ．
+        /// </summary>
         public Weight(float value) {
             if (value <= 0) {
                 throw new ArgumentException("Weight must be greater than 0.");
             }
             Value = value;
         }
+
+        public Weight Add(float value) {
+            return new Weight(this.Value + value);
+        }
+
 
         protected override bool EqualsCore(Weight other) {
             return Value.Equals(other.Value);
