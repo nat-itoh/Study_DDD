@@ -3,9 +3,9 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
-using BmiApp.Domain.BmiCalculater.Repository;
+using App.Domain.BmiCalculater.Repository;
 
-namespace BmiApp.Infrastructure.BmiCalculator {
+namespace App.Infrastructure.BmiCalculator {
 
     /// <summary>
     /// <see cref="PlayerPrefs"/>を利用した永続的なデータ保存用クラス．

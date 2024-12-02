@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BmiApp.Domain.BmiCalculater.Repository;
+using App.Domain.BmiCalculater.Repository;
 
-namespace BmiApp.Infrastructure.BmiCalculator {
+namespace App.Infrastructure.BmiCalculator {
 
     /// <summary>
     /// 一時的なデータ保存用クラス．

@@ -1,7 +1,7 @@
 using System;
 using System.Threading.Tasks;
 
-namespace BmiApp.Domain.Shared{
+namespace App.Domain.Shared{
 
     public interface IDataStore{
     

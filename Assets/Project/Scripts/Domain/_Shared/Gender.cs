@@ -1,6 +1,6 @@
 using System;
 
-namespace BmiApp.Domain.Shared {
+namespace App.Domain.Shared {
 
     public enum Gender {
         None = 0,

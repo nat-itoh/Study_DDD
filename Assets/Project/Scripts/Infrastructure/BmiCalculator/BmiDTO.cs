@@ -1,11 +1,11 @@
 using System;
 using UnityEngine;
-using BmiApp.Domain.BmiCalculater.Repository;
-using BmiApp.Domain.Shared;
+using App.Domain.BmiCalculater.Repository;
+using App.Domain.Shared;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace BmiApp.Infrastructure {
+namespace App.Infrastructure {
 
     /// <summary>
     /// 

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using BmiApp.Domain.Authentification.ValueObjects;
+using App.Domain.Authentification.ValueObjects;
 
-namespace BmiApp.Domain.Authentification.Entites {
+namespace App.Domain.Authentification.Entites {
 
     public sealed class User {
 
