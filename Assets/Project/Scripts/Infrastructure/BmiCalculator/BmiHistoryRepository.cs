@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using BmiApp.Domain.BmiCalculater.Repository;
+using App.Domain.BmiCalculater.Repository;
 
-namespace BmiApp.Infrastructure.BmiCalculator {
+namespace App.Infrastructure.BmiCalculator {
 
     public class BmiHistoryRepository : IBmiHistoryRepository {
 

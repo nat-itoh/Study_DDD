@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace BmiApp.Domain.BmiCalculater.Repository {
+namespace App.Domain.BmiCalculater.Repository {
 
     public interface IBmiHistoryRepository {
 

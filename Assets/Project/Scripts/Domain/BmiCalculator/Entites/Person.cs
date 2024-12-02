@@ -1,9 +1,12 @@
 using System;
-using BmiApp.Domain.BmiCalculater.ValueObjects;
+using App.Domain.BmiCalculater.ValueObjects;
 
-namespace BmiApp.Domain.BmiCalculater.Eintities {
+namespace App.Domain.BmiCalculater.Eintities {
 
-    public class Person {
+    /// <summary>
+    /// 
+    /// </summary>
+    public sealed class Person {
 
         /// <summary>
         /// êgí∑[m]

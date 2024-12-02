@@ -1,7 +1,7 @@
 using System;
-using BmiApp.Domain.Shared;
+using App.Domain.Shared;
 
-namespace BmiApp.Domain.BmiCalculater.ValueObjects {
+namespace App.Domain.BmiCalculater.ValueObjects {
 
     /// <summary>
     /// êgí∑Çï\Ç∑ValueObjectÅD

@@ -1,7 +1,7 @@
 using System;
-using BmiApp.Domain.Shared;
+using App.Domain.Shared;
 
-namespace BmiApp.Domain.BmiCalculater.Repository {
+namespace App.Domain.BmiCalculater.Repository {
     
     /// <summary>
     /// 

@@ -1,8 +1,8 @@
 using System;
 using System.Text.RegularExpressions;
-using BmiApp.Domain.Shared;
+using App.Domain.Shared;
 
-namespace BmiApp.Domain.Authentification.ValueObjects {
+namespace App.Domain.Authentification.ValueObjects {
 
     /// <summary>
     /// Email‚ğ•\‚·ValueObjectD
