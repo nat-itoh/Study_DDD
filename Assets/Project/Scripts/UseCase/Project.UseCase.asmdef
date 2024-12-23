@@ -1,6 +1,6 @@
 {
     "name": "Project.UseCase",
-    "rootNamespace": "BmiApp.UseCase",
+    "rootNamespace": "Project.UseCase",
     "references": [
         "GUID:60d24026939295745a2a89e3b302646f"
     ],
