@@ -8,43 +8,44 @@ namespace Project.Infrastructure.Setting {
 
     public class PlayerPrefsSoundSettingsRepository : ISoundSettingsRepository {
 
-        // Key
-        private const string VoiceVolumeKey = "VoiceVolume";
-        private const string VoiceMutedKey = "VoiceMuted";
-        private const string BgmVolumeKey = "BgmVolume";
-        private const string BgmMutedKey = "BgmMuted";
-        private const string SeVolumeKey = "SeVolume";
-        private const string SeMutedKey = "SeMuted";
-
+        // ƒL[‚ÌŠÇ—
+        private static class Keys {
+            public const string VoiceVolume = "VoiceVolume";
+            public const string VoiceMuted = "VoiceMuted";
+            public const string BgmVolume = "BgmVolume";
+            public const string BgmMuted = "BgmMuted";
+            public const string SeVolume = "SeVolume";
+            public const string SeMuted = "SeMuted";
+        }
 
         private static float VoiceVolume {
-            get => PlayerPrefs.GetFloat(VoiceVolumeKey, 1.0f);
-            set => PlayerPrefs.SetFloat(VoiceVolumeKey, value);
-        }
-
-        private static float BgmVolume {
-            get => PlayerPrefs.GetFloat(BgmVolumeKey, 1.0f);
-            set => PlayerPrefs.SetFloat(BgmVolumeKey, value);
-        }
-
-        private static float SeVolume {
-            get => PlayerPrefs.GetFloat(SeVolumeKey, 1.0f);
-            set => PlayerPrefs.SetFloat(SeVolumeKey, value);
+            get => PlayerPrefs.GetFloat(Keys.VoiceVolume, 1.0f);
+            set => PlayerPrefs.SetFloat(Keys.VoiceVolume, value);
         }
 
         private static bool IsVoiceMuted {
-            get => PlayerPrefs.GetInt(VoiceMutedKey, 0) == 1;
-            set => PlayerPrefs.SetInt(VoiceMutedKey, value ? 1 : 0);
+            get => PlayerPrefs.GetInt(Keys.VoiceMuted, 0) == 1;
+            set => PlayerPrefs.SetInt(Keys.VoiceMuted, value ? 1 : 0);
+        }
+
+        private static float BgmVolume {
+            get => PlayerPrefs.GetFloat(Keys.BgmVolume, 1.0f);
+            set => PlayerPrefs.SetFloat(Keys.BgmVolume, value);
         }
 
         private static bool IsBgmMuted {
-            get => PlayerPrefs.GetInt(BgmMutedKey, 0) == 1;
-            set => PlayerPrefs.SetInt(BgmMutedKey, value ? 1 : 0);
+            get => PlayerPrefs.GetInt(Keys.BgmMuted, 0) == 1;
+            set => PlayerPrefs.SetInt(Keys.BgmMuted, value ? 1 : 0);
+        }
+
+        private static float SeVolume {
+            get => PlayerPrefs.GetFloat(Keys.SeVolume, 1.0f);
+            set => PlayerPrefs.SetFloat(Keys.SeVolume, value);
         }
 
         private static bool IsSeMuted {
-            get => PlayerPrefs.GetInt(SeMutedKey, 0) == 1;
-            set => PlayerPrefs.SetInt(SeMutedKey, value ? 1 : 0);
+            get => PlayerPrefs.GetInt(Keys.SeMuted, 0) == 1;
+            set => PlayerPrefs.SetInt(Keys.SeMuted, value ? 1 : 0);
         }
 
 
