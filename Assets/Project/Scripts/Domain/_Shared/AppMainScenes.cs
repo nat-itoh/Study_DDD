@@ -1,5 +1,5 @@
 using UnityEngine;
-using App.Domain.Shared;
+using Project.Domain.Shared;
 
 // [REF]
 //  qiita: DDD実装パターンの区分オブジェクトをC#で実装する https://qiita.com/haguta/items/ceca207c313eef332cb1

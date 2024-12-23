@@ -4,7 +4,7 @@ using System;
 //  _: C#でドメイン駆動開発ValueObjectでプログラムの複雑さを取り除く https://anderson02.com/cs/ddd/ddd10/
 //  qiita: DDD に入門するなら、まずは ValueObject だけでもいいんじゃない？ https://qiita.com/t2-kob/items/9d9dd038fe7497756dbf
 
-namespace App.Domain.Shared {
+namespace Project.Domain.Shared {
 
     /// <summary>
     /// ValueObjectの基底クラス．
