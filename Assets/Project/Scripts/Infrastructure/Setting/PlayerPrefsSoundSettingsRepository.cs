@@ -54,26 +54,26 @@ namespace Project.Infrastructure.Setting {
         /// </summary>
         public UniTask<SoundSettingsSet> LoadAsync() {
 
-            var voice = new SoundSettings(VoiceVolume, IsVoiceMuted);
             var bgm = new SoundSettings(BgmVolume, IsBgmMuted);
             var se = new SoundSettings(SeVolume, IsSeMuted);
+            var voice = new SoundSettings(VoiceVolume, IsVoiceMuted);
 
-            return UniTask.FromResult(new SoundSettingsSet(voice, bgm, se));
+            return UniTask.FromResult(new SoundSettingsSet(bgm, se, voice));
         }
 
         /// <summary>
         /// ”ñ“¯Šú‚Åİ’è’l‚ğ•Û‘¶‚·‚éD
         /// </summary>
-        public UniTask SaveAsync(SoundSettingsSet soundSettingsSet) {
+        public UniTask SaveAsync(SoundSettingsSet sounds) {
 
-            VoiceVolume = soundSettingsSet.Voice.Volume;
-            IsVoiceMuted = soundSettingsSet.Voice.Muted;
-
-            BgmVolume = soundSettingsSet.Bgm.Volume;
-            IsBgmMuted = soundSettingsSet.Bgm.Muted;
+            BgmVolume = sounds.Bgm.Volume;
+            IsBgmMuted = sounds.Bgm.Muted;
             
-            SeVolume = soundSettingsSet.Se.Volume;
-            IsSeMuted = soundSettingsSet.Se.Muted;
+            SeVolume = sounds.Se.Volume;
+            IsSeMuted = sounds.Se.Muted;
+            
+            VoiceVolume = sounds.Voice.Volume;
+            IsVoiceMuted = sounds.Voice.Muted;
 
             return UniTask.CompletedTask;
         }

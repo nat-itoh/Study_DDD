@@ -38,6 +38,14 @@ namespace Project.Domain.Setting.Model {
             return HashCode.Combine(Volume, Muted);
         }
 
+        /// <summary>
+        /// 文字列への変換．
+        /// </summary>
+        public override string ToString() {
+            return $"Volume: {Volume:F2}, Muted {Muted}";
+        }
+
+
         public SoundSettings WithVolume(float volume) => new (volume, Muted);
         public SoundSettings WithMuted(bool muted) => new (Volume, muted);
 
@@ -45,6 +53,9 @@ namespace Project.Domain.Setting.Model {
         /// ----------------------------------------------------------------------------
         // Protected Method
 
+        /// <summary>
+        /// 値の比較ロジック．
+        /// </summary>
         protected override bool EqualsCore(SoundSettings other) {
             return this.Volume == other.Volume 
                 && this.Muted == other.Muted;
