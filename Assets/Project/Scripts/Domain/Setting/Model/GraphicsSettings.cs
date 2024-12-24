@@ -1,71 +1,78 @@
 using System;
-using UniRx;
+using Project.Domain.Shared;
 
 namespace Project.Domain.Setting.Model {
 
     /// <summary>
     /// 画質設定．ゲームの描画品質に関連する設定を管理する．
     /// </summary>
-    public sealed class GraphicsSettings {
-
-        private readonly Subject<ValueChangedEvent> _valueChangedSubject = new();
+    public sealed class GraphicsSettings : ValueObject<GraphicsSettings> {
 
         /// <summary>
-        /// 画面
+        /// 解像度（幅）．
         /// </summary>
         public int ResolutionWidth { get; private set; }
-        
+
         /// <summary>
-        /// 
+        /// 解像度（高さ）．
         /// </summary>
         public int ResolutionHeight { get; private set; }
 
         /// <summary>
-        /// フル画面表示かどうか．
+        /// フルスクリーンモード．
         /// </summary>
         public bool FullScreen { get; private set; }
-        
-        /// <summary>
-        /// 
-        /// </summary>
-        public int GraphicsQuality { get; private set; } // 0: Low, 1: Medium, 2: High, etc.
 
         /// <summary>
-        /// 値が変化したときに通知するObservable．
+        /// グラフィック品質．
+        /// （0: Low, 1: Medium, 2: High, etc.）
         /// </summary>
-        public IObservable<ValueChangedEvent> ValueChanged => _valueChangedSubject;
+        public int GraphicsQuality { get; private set; }
+
+
+        /// ----------------------------------------------------------------------------
+        // Public Method
 
         /// <summary>
-        /// 値を設定する．
+        /// コンストラクタ．
         /// </summary>
-        internal void SetValues(int width, int height, bool fullScreen, int quality) {
-            ResolutionWidth = width;
-            ResolutionHeight = height;
+        public GraphicsSettings(int resolutionWidth, int resolutionHeight, bool fullScreen, int graphicsQuality) {
+            ResolutionWidth = resolutionWidth;
+            ResolutionHeight = resolutionHeight;
             FullScreen = fullScreen;
-            GraphicsQuality = quality;
-            _valueChangedSubject.OnNext(new ValueChangedEvent(width, height, fullScreen, quality));
+            GraphicsQuality = graphicsQuality;
         }
 
         /// <summary>
-        /// 終了処理．
+        /// ハッシュ値の取得．
         /// </summary>
-        public void Dispose() {
-            _valueChangedSubject.Dispose();
+        public override int GetHashCode() {
+            return HashCode.Combine(ResolutionWidth, ResolutionHeight, FullScreen, GraphicsQuality);
         }
 
+        /// <summary>
+        /// 文字列への変換．
+        /// </summary>
+        public override string ToString() {
+            return $"Resolution: {ResolutionWidth}x{ResolutionHeight}, FullScreen {FullScreen}";
+        }
 
-        public readonly struct ValueChangedEvent {
-            public ValueChangedEvent(int width, int height, bool fullScreen, int quality) {
-                ResolutionWidth = width;
-                ResolutionHeight = height;
-                FullScreen = fullScreen;
-                GraphicsQuality = quality;
-            }
+        public GraphicsSettings WithResolution(int width, int height) => new(width, height, FullScreen, GraphicsQuality);
+        public GraphicsSettings WithFullScreen(bool fullScreen) => new(ResolutionWidth, ResolutionHeight, fullScreen, GraphicsQuality);
+        public GraphicsSettings WithGraphicsQuality(int graphicsQuality) => new(ResolutionWidth, ResolutionHeight, FullScreen, graphicsQuality);
 
-            public int ResolutionWidth { get; }
-            public int ResolutionHeight { get; }
-            public bool FullScreen { get; }
-            public int GraphicsQuality { get; }
+
+        /// ----------------------------------------------------------------------------
+        // Protected Method
+
+        /// <summary>
+        /// 値の比較ロジック．
+        /// </summary>
+        protected override bool EqualsCore(GraphicsSettings other) {
+            return ResolutionWidth == other.ResolutionWidth &&
+                   ResolutionHeight == other.ResolutionHeight &&
+                   FullScreen == other.FullScreen &&
+                   GraphicsQuality == other.GraphicsQuality;
         }
     }
 }

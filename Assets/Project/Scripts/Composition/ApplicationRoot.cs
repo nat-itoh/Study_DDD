@@ -7,19 +7,21 @@ using Project.Domain.Setting.Model;
 using Project.Domain.Setting.Repository;
 using Project.Infrastructure.Setting;
 using Project.UseCase.Setting;
+using Project.View.Setting;
+using Project.Presentation.Setting;
 
 namespace App.Composition {
 
     public sealed class ApplicationRoot : MonoBehaviour {
 
-
         //private readonly ISceneIdentifier homeScene = new BuiltInSceneIdentifier("Home");
         //private readonly ISceneIdentifier stageScene = new BuiltInSceneIdentifier("Stage");
 
-        private async void Start() {
+        [SerializeField] SoundSettingsView _soundSettingsView;
 
-            await UniTask.Yield();
+        private SoundSettingsUseCase settingsUseCase;
 
+       private async void Start() {
 
             // Repository
             var soundRepository = new PlayerPrefsSoundSettingsRepository() as ISoundSettingsRepository;
@@ -30,31 +32,35 @@ namespace App.Composition {
             var settingsModel = new SettingsModel(soundSettingsSet);
 
             // UseCase
-            var settingsUseCase = new SoundSettingsUseCase(settingsModel, soundRepository);
+            settingsUseCase = new SoundSettingsUseCase(settingsModel, soundRepository);
+
+            var disposable = new CompositeDisposable();
+
+            // Presenter
+            var soundPresenter = new SettingsModalPresenter(
+                _soundSettingsView,
+                settingsUseCase,
+                disposable);
+            await soundPresenter.Initialize(new SoundSettingsViewState());
 
 
 
             // 設定変更を監視
-            settingsModel.SoundSettingsSetRP.Subscribe(settings => {
-                Debug.Log($"Voice: {settings.Voice.Volume}, Muted: {settings.Voice.Muted}");
-                Debug.Log($"BGM: {settings.Bgm.Volume}, Muted: {settings.Bgm.Muted}");
-                Debug.Log($"SE: {settings.Se.Volume}, Muted: {settings.Se.Muted}");
+            settingsModel.SoundsRP.Subscribe(settings => {
+                var message = 
+                $"[Voice] {settings.Voice.ToString()}\n" + 
+                $"[BGM] {settings.Bgm.ToString()}\n" +
+                $"[SE] {settings.Se.ToString()}";
+                Debug.Log(message);
             });
 
-            // 設定をロード
-            await settingsUseCase.LoadSoundSettingsAsync();
 
-            // 設定を変更
-            var updatedSettings = settingsModel.SoundSettingsSetRP.Value.WithVoice(
-                settingsModel.SoundSettingsSetRP.Value.Voice.WithVolume(0.8f)
-            );
-            settingsUseCase.UpdateSoundSettings(updatedSettings);
-
-            // 設定を保存
+            await UniTask.WaitForSeconds(4);
             await settingsUseCase.SaveSoundSettingsAsync();
-
         }
 
+        private void OnDestroy() {
+        }
 
     }
 
