@@ -1,14 +1,13 @@
 using System;
 using UniRx;
+using Project.Domain.Shared;
 
 namespace Project.Domain.Setting.Model {
 
     /// <summary>
     /// 言語設定．言語や地域に関連する設定を管理する．
     /// </summary>
-    public class LaunguageSettings : IDisposable{
-
-        private readonly Subject<ValueChangedEvent> _valueChangedSubject = new();
+    public sealed class LaunguageSettings : ValueObject<LaunguageSettings> {
 
         /// <summary>
         /// 言語コード．
@@ -22,37 +21,34 @@ namespace Project.Domain.Setting.Model {
         /// </summary>
         public string RegionCode { get; private set; }
 
-        /// <summary>
-        /// 値が変化したときに通知するObservable．
-        /// </summary>
-        public IObservable<ValueChangedEvent> ValueChanged => _valueChangedSubject;
 
+        /// ----------------------------------------------------------------------------
+        // Public Method
 
         /// <summary>
-        /// 値を設定する．
+        /// コンストラクタ．
         /// </summary>
-        internal void SetValues(string languageCode, string regionCode) {
-            LanguageCode = languageCode;
-            RegionCode = regionCode;
-            _valueChangedSubject.OnNext(new ValueChangedEvent(languageCode, regionCode));
+        public LaunguageSettings() {
+
         }
 
         /// <summary>
-        /// 終了処理．
+        /// ハッシュ値の取得．
         /// </summary>
-        public void Dispose() {
-            _valueChangedSubject.Dispose();
+        public override int GetHashCode() {
+            return HashCode.Combine(LanguageCode, RegionCode);
         }
 
 
-        public readonly struct ValueChangedEvent {
-            public ValueChangedEvent(string languageCode, string regionCode) {
-                LanguageCode = languageCode;
-                RegionCode = regionCode;
-            }
+        /// ----------------------------------------------------------------------------
+        // Protected Method
 
-            public string LanguageCode { get; }
-            public string RegionCode { get; }
+        /// <summary>
+        /// 値の比較ロジック．
+        /// </summary>
+        protected override bool EqualsCore(LaunguageSettings other) {
+            return this.LanguageCode == other.LanguageCode
+                && this.RegionCode == other.RegionCode;
         }
     }
 }

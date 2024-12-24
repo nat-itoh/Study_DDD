@@ -7,10 +7,14 @@ namespace Project.Domain.Setting.Model {
 
         private readonly ReactiveProperty<SoundSettingsSet> _soundSettingsSetRP;
 
-        /// <summary>
-        /// 
-        /// </summary>
-        public IReadOnlyReactiveProperty<SoundSettingsSet> SoundSettingsSetRP => _soundSettingsSetRP;
+        // Getter
+        public SoundSettingsSet Sounds => _soundSettingsSetRP.Value;
+        
+        // Observable
+        public IReadOnlyReactiveProperty<SoundSettingsSet> SoundsRP => _soundSettingsSetRP;
+
+
+
 
 
         /// ----------------------------------------------------------------------------
