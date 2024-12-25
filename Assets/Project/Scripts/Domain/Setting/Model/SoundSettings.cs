@@ -5,7 +5,7 @@ using Project.Domain.Shared;
 namespace Project.Domain.Setting.Model {
 
     /// <summary>
-    /// ‰¹—Êİ’èD
+    /// ‰¹—Êİ’è‚ÌValueObjectD
     /// </summary>
     public sealed class SoundSettings : ValueObject<SoundSettings> {
 
