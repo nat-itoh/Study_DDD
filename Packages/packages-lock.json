@@ -5,7 +5,7 @@
       "depth": 0,
       "source": "git",
       "dependencies": {},
-      "hash": "f9fd769be7c634610f2a61aa914a1a55f34740e1"
+      "hash": "b0d01ca75fc890b76e81202d655d17c1f4214a18"
     },
     "com.harumak.unityscreennavigator": {
       "version": "https://github.com/Haruma-K/UnityScreenNavigator.git?path=/Assets/UnityScreenNavigator",
@@ -232,6 +232,13 @@
         "com.unity.modules.jsonserialize": "1.0.0"
       },
       "url": "https://packages.unity.com"
+    },
+    "jp.hadashikick.vcontainer": {
+      "version": "https://github.com/hadashiA/VContainer.git?path=VContainer/Assets/VContainer#1.16.7",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "b021dfa5593dc9ffbb0a30dd43dfcc4f13f3d381"
     },
     "com.unity.modules.accessibility": {
       "version": "1.0.0",
