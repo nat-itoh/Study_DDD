@@ -21,9 +21,7 @@ namespace Project.Domain.Shared {
             return EqualsCore(vo);
         }
 
-        public override int GetHashCode() {
-            return base.GetHashCode();
-        }
+        public abstract override int GetHashCode();
 
         protected abstract bool EqualsCore(T other);
 

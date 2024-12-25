@@ -3,6 +3,7 @@
     "rootNamespace": "Tests.Editor",
     "references": [
         "Project.Domain",
+        "Project.UseCase",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],

@@ -40,6 +40,9 @@ namespace Project.Domain.Setting.Model {
         /// ----------------------------------------------------------------------------
         // Protected Method
 
+        /// <summary>
+        /// 値の比較ロジック．
+        /// </summary>
         protected override bool EqualsCore(SoundSettingsSet other) {
             return this.Bgm == other.Bgm
                 && this.Se == other.Se

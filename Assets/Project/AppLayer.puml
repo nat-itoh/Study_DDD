@@ -1,0 +1,93 @@
+@startuml
+
+package "Domain Layer" {
+  class Character {
+    <<Entity>>
+  }
+  class GachaLogic {
+    <<Service>>
+  }
+  class Unit {
+    <<Entity>>
+  }
+}
+
+package "Application Layer" {
+  class DrawGachaUseCase {
+    <<UseCase>>
+  }
+  class EditUnitUseCase {
+    <<UseCase>>
+  }
+}
+
+package "Presentation Layer" {
+  package "Presenter" {
+    class GachaPresenter {
+      <<Presenter>>
+    }
+    class UnitEditorPresenter {
+      <<Presenter>>
+    }
+  }
+  package "UIs" {
+    class GachaUIView {
+      <<View>>
+    }
+    class UnitEditorView {
+      <<View>>
+    }
+  }
+}
+
+package "Infrastructure Layer" {
+  class LocalSave {
+    <<Repository>>
+  }
+  class AssetLoader {
+    <<Service>>
+  }
+}
+
+package "MonoBehaviour Components" {
+  package "GameControllers" {
+    class CharacterController {
+      <<MonoBehaviour>>
+    }
+    class UnitController {
+      <<MonoBehaviour>>
+    }
+  }
+  package "UtilityComponents" {
+    class RotationController {
+      <<MonoBehaviour>>
+    }
+    class EffectTrigger {
+      <<MonoBehaviour>>
+    }
+  }
+}
+
+' Domain to Application
+Character --> DrawGachaUseCase : "Uses"
+Unit --> EditUnitUseCase : "Uses"
+GachaLogic --> DrawGachaUseCase : "Uses"
+
+' Application to Presentation
+DrawGachaUseCase --> GachaPresenter : "Interacts"
+EditUnitUseCase --> UnitEditorPresenter : "Interacts"
+
+' Presenter to View
+GachaPresenter --> GachaUIView : "Updates"
+UnitEditorPresenter --> UnitEditorView : "Updates"
+
+' Infrastructure dependencies
+LocalSave --> DrawGachaUseCase : "Provides"
+AssetLoader --> Character : "Provides 3D Models"
+
+' MonoBehaviour to Presentation or Domain
+CharacterController --> Character : "Controls"
+UnitController --> Unit : "Controls"
+RotationController --> CharacterController : "Supports"
+EffectTrigger --> RotationController : "Triggers"
+@enduml

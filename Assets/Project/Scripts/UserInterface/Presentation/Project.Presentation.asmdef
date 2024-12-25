@@ -1,6 +1,6 @@
 {
-    "name": "BmiApp.Presentation",
-    "rootNamespace": "BmiApp.Presentation",
+    "name": "Project.Presentation",
+    "rootNamespace": "Project.Presentation",
     "references": [
         "GUID:60d24026939295745a2a89e3b302646f",
         "GUID:de3bf74daa3629e4aaa57c306a862a14",
