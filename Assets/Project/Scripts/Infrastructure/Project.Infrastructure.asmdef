@@ -3,7 +3,9 @@
     "rootNamespace": "Project.Infrastructure",
     "references": [
         "GUID:60d24026939295745a2a89e3b302646f",
-        "GUID:f51ebe6a0ceec4240a699833d6309b23"
+        "GUID:de3bf74daa3629e4aaa57c306a862a14",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:0da6d172d18a54e4389d0dce1e1ffdf2"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
