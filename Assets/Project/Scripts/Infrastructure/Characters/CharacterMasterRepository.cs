@@ -16,6 +16,9 @@ namespace Project.Infrastructure.Characters {
             _table = null;
         }
 
+        /// <summary>
+        /// 非同期でマスターテーブルを読み込む．
+        /// </summary>
         public async UniTask<ICharacterMasterTable> FetchTableAsync() {
             if (_table != null)
                 return _table;

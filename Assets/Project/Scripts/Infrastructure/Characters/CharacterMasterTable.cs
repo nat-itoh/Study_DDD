@@ -20,9 +20,7 @@ namespace Project.Infrastructure.Characters {
         /// <summary>
         /// 初期化処理．
         /// </summary>
-        public void Initialize() {
-            
-        }
+        public void Initialize() { }
 
         /// <summary>
         /// 全要素を取得する．
