@@ -35,5 +35,9 @@ namespace Project.Domain.Characters.Model {
             Name = name;
             Rarity = rarity;
         }
+
+        public override string ToString() {
+            return $"id: {Id.ToString()}, name: {Name}";
+        }
     }
 }

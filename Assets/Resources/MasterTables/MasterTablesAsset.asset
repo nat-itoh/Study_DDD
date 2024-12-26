@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 8
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 547989b458d15d740acafd178839d9f4, type: 3}
+  m_Name: MasterTablesAsset
+  m_EditorClassIdentifier: 
+  CharacterData:
+  - id: 1
+    name: Alice
+    rarity: Common
+  - id: 2
+    name: Jhon
+    rarity: Common
+  - id: 3
+    name: Kou
+    rarity: Common
+  - id: 5
+    name: Ealice
+    rarity: Rare
+  - id: 6
+    name: Ruby
+    rarity: Epic

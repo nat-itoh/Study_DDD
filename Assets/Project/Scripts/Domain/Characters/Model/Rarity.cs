@@ -29,13 +29,24 @@ namespace Project.Domain.Characters.Model {
         }
         
         /// <summary>
-        /// 
+        /// Idから Rarity へ変換する．
         /// </summary>
         public static Rarity FromId(int id) {
             if (_valuesById.TryGetValue(id, out var rarity))
                 return rarity;
 
             throw new ArgumentException($"Invalid Rarity ID: {id}");
+        }
+
+        /// <summary>
+        /// 名前から Rarity へ変換する．
+        /// </summary>
+        public static Rarity FromName(string name) {
+            var rarity = GetAll().FirstOrDefault(r => r.Name == name);
+            if (rarity == null)
+                throw new ArgumentException($"Invalid Rarity Name: {name}");
+
+            return rarity;
         }
         #endregion
 
@@ -51,6 +62,9 @@ namespace Project.Domain.Characters.Model {
         public string Name { get; }
 
 
+        /// ----------------------------------------------------------------------------
+        // Public Method
+
         /// <summary>
         /// コンストラクタ．(非公開)
         /// </summary>
@@ -59,14 +73,17 @@ namespace Project.Domain.Characters.Model {
             Name = name;
         }
 
+        public override int GetHashCode() => Id.GetHashCode();
+
+        public override string ToString() => Name;
+
+
+        /// ----------------------------------------------------------------------------
+        // Protected Method
 
         protected override bool EqualsCore(Rarity other) {
             return Id == other.Id;
         }
-
-        public override int GetHashCode() => Id.GetHashCode();
-
-        public override string ToString() => Name;
     }
 
 }

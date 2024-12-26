@@ -3,6 +3,9 @@ using VContainer.Unity;
 using UnityEngine;
 using UnityScreenNavigator.Runtime.Core.Modal;
 
+using Project.Domain.Characters.Repository;
+using Project.Infrastructure.Characters;
+
 namespace Project.Composition {
 
     public class TestLifetimeScope : LifetimeScope {
@@ -10,7 +13,7 @@ namespace Project.Composition {
         [SerializeField] ModalContainer _modalContainer;
 
 
-        protected override void Configure(IContainerBuilder builder){
+        protected async override void Configure(IContainerBuilder builder){
 
             Debug.Log("Configure");
             // ModalContainer‚ð“o˜^
@@ -18,6 +21,15 @@ namespace Project.Composition {
 
             // 
             builder.RegisterEntryPoint<MainScreenModalManager>();
+
+
+
+            var repository = new CharacterMasterRepository();
+            var table =  await repository.FetchTableAsync();
+
+            foreach(var item in table.GetAll()) {
+                Debug.Log(item);
+            }
         }
     }
 }

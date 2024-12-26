@@ -1,12 +1,12 @@
 using System.Collections.Generic;
-using Cysharp.Threading.Tasks;
 using Project.Domain.Shared;
 using Project.Domain.Characters.Model;
 
 namespace Project.Domain.Characters.Repository {
 
-    public interface ICharacterMaseterRepository : IMasterRepository {
+    public interface ICharacterMasterTable : IMasterTable {
 
-        UniTask<ICharacterMasterTable> FetchTableAsync();
+        IReadOnlyList<Character> GetAll();
+        Character FindById(CharacterId id);
     }
 }
