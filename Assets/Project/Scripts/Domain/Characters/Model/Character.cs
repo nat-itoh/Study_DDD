@@ -23,6 +23,10 @@ namespace Project.Domain.Characters.Model {
         /// </summary>
         public Rarity Rarity { get; }
 
+
+        /// ----------------------------------------------------------------------------
+        // Public Method
+
         /// <summary>
         /// コンストラクタ．
         /// </summary>

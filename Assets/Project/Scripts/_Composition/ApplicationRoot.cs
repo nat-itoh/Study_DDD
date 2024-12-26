@@ -20,7 +20,7 @@ namespace App.Composition {
         [SerializeField] SoundSettingsView _soundSettingsView;
 
         private SoundSettingsUseCase settingsUseCase;
-
+        /*
        private async void Start() {
 
             // Repository
@@ -58,7 +58,7 @@ namespace App.Composition {
             await UniTask.WaitForSeconds(4);
             await settingsUseCase.SaveSoundSettingsAsync();
         }
-
+        */
         private void OnDestroy() {
         }
 
