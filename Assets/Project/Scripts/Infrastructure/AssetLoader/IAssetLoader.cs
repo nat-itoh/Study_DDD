@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Object = UnityEngine.Object;
+using UnityEngine;
 
 namespace Project.Infrastructure.Common {
 

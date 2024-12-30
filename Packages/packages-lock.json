@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.bg.unitaskstatemachine": {
+      "version": "https://github.com/k-okawa/UniTaskStateMachine.git?path=Assets/Bg/UniTaskStateMachine",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "83c2a83ec0fdca64ba25a18751d2bbea443ad4dd"
+    },
     "com.cysharp.unitask": {
       "version": "https://github.com/Cysharp/UniTask.git?path=src/UniTask/Assets/Plugins/UniTask",
       "depth": 0,
