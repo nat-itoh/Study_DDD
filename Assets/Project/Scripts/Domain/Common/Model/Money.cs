@@ -54,5 +54,6 @@ namespace Project.Domain.Common.Model {
         protected override bool EqualsCore(Money other) {
             return Amount == other.Amount;
         }
+
     }
 }
