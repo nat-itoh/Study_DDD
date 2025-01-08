@@ -54,7 +54,7 @@ namespace Project.Domain.Common.Model {
 
             BirthDate = birthDate.Date; // 時間を無視するためDateを使用
         }
-
+        
         /// <summary>
         /// ハッシュ値の取得．
         /// </summary>
@@ -68,6 +68,7 @@ namespace Project.Domain.Common.Model {
         public override string ToString() {
             return $"BirthDate: {BirthDate:yyyy-MM-dd}, Age: {Value}, Category: {Category}";
         }
+
 
 
         /// ----------------------------------------------------------------------------
