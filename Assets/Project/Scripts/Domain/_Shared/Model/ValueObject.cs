@@ -26,6 +26,9 @@ namespace Project.Domain.Shared {
         protected abstract bool EqualsCore(T other);
 
 
+        /// ----------------------------------------------------------------------------
+        #region Static
+        
         public static bool operator ==(ValueObject<T> vo1, ValueObject<T> vo2) {
             return Equals(vo1, vo2);
         }
@@ -33,5 +36,6 @@ namespace Project.Domain.Shared {
         public static bool operator !=(ValueObject<T> vo1, ValueObject<T> vo2) {
             return !Equals(vo1, vo2);
         }
+        #endregion
     }
 }
