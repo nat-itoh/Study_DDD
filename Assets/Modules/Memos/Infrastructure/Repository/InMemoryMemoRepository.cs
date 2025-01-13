@@ -5,31 +5,51 @@ using Cysharp.Threading.Tasks;
 using Project.Domain.Memos.Model;
 using Project.Domain.Memos.Repository;
 
-namespace Project.Infrastructure.Memos {
+namespace Project.Infrastructure.Default.Memos {
 
     public sealed class InMemoryMemoRepository : IMemoRepository {
 
         private readonly Dictionary<Guid, Memo> _store = new();
 
 
-        public UniTask SaveAsync(Memo memo) {
+        /// ----------------------------------------------------------------------------
+        // Public Method
+
+        /// <summary>
+        /// コンストラクタ．
+        /// </summary>
+        public InMemoryMemoRepository() {
+
+    }
+
+        /// <summary>
+        /// 終了処理．
+        /// </summary>
+        public void Dispose() {
+
+        }
+
+
+        /// ----------------------------------------------------------------------------
+        // Public Method
+
+        UniTask IMemoRepository.SaveAsync(Memo memo) {
             _store[memo.Id] = memo;
             return UniTask.CompletedTask;
         }
 
-        public UniTask<IEnumerable<Memo>> GetAllAsync() {
+        UniTask<IEnumerable<Memo>> IMemoRepository.GetAllAsync() {
             return UniTask.FromResult(_store.Values.AsEnumerable());
         }
 
-        public UniTask<Memo> FindByIdAsync(Guid id) {
+        UniTask<Memo> IMemoRepository.FindByIdAsync(Guid id) {
             _store.TryGetValue(id, out var memo);
             return UniTask.FromResult(memo);
         }
 
-        public UniTask DeleteAsync(Guid id) {
+        UniTask IMemoRepository.DeleteAsync(Guid id) {
             _store.Remove(id);
             return UniTask.CompletedTask;
         }
-
     }
 }

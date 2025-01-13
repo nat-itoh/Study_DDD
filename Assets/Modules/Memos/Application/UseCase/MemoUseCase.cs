@@ -6,15 +6,18 @@ using Project.Domain.Memos.Repository;
 
 namespace Project.Application.Memos.UseCase {
 
-    public sealed class MemoService {
+    public sealed class MemoUseCase {
 
         private readonly IMemoRepository _repository;
 
 
+        /// ----------------------------------------------------------------------------
+        // Public Method
+
         /// <summary>
         /// コンストラクタ．
         /// </summary>
-        public MemoService(IMemoRepository repository) {
+        public MemoUseCase(IMemoRepository repository) {
             _repository = repository;
         }
 
@@ -22,7 +25,8 @@ namespace Project.Application.Memos.UseCase {
         /// メモを作成する．
         /// </summary>
         public async UniTask<Memo> CreateMemoAsync(string title, string content) {
-            var memo = new Memo(Guid.NewGuid(), title, new Content(content));
+
+            var memo = Memo.CreateNew(title, new Content(content));
             await _repository.SaveAsync(memo);
             return memo;
         }

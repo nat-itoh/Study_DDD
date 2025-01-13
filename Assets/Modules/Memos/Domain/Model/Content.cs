@@ -18,9 +18,7 @@ namespace Project.Domain.Memos.Model {
         /// コンストラクタ．
         /// </summary>
         public Content(string text) {
-            if (string.IsNullOrEmpty(text)) {
-                throw new InvalidOperationException();
-            }
+            if (text == null) throw new InvalidOperationException();
             Text = text;
         }
         

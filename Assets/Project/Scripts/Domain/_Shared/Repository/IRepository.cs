@@ -2,7 +2,7 @@ using System;
 
 namespace Project.Domain.Shared {
 
-    public interface IRepository {
+    public interface IRepository : IDisposable {
 
         
     }
