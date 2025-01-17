@@ -14,7 +14,7 @@ namespace Project.Domain.Shared {
     /// <summary>
     /// ValueObjectの基底クラス．
     /// </summary>
-    public abstract class ValueObject<T> : IValueObject
+    public abstract class ValueObject<T>
         where T : ValueObject<T> {
 
         public override bool Equals(object obj) {

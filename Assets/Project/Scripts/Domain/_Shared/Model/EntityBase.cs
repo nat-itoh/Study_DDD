@@ -2,7 +2,8 @@
 
 namespace Project.Domain.Shared {
 
-    public abstract class EntityBase<T> {
+    public abstract class EntityBase<T> 
+        where T : IEquatable<T>{
         
         public T Id { get; }
 

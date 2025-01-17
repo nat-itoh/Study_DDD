@@ -2,16 +2,16 @@ using System;
 using Project.Domain.Shared;
 
 namespace Project.Domain.Common.Model {
-    
+
     public class Name : ValueObject<Name> {
-        
+
         /// <summary>
-        /// 姓．
+        /// 名前．
         /// </summary>
         public string FirstName { get; }
-        
+
         /// <summary>
-        /// 名．
+        /// 名字．
         /// </summary>
         public string LastName { get; }
 
@@ -23,10 +23,9 @@ namespace Project.Domain.Common.Model {
         /// </summary>
         public Name(string firstName, string lastName) {
             if (string.IsNullOrWhiteSpace(firstName))
-                throw new ArgumentException("名前（姓）は空であってはいけません。");
-
+                throw new ArgumentException($"{nameof(firstName)}は空であってはいけません。");
             if (string.IsNullOrWhiteSpace(lastName))
-                throw new ArgumentException("名前（名）は空であってはいけません。");
+                throw new ArgumentException($"{nameof(lastName)}は空であってはいけません。");
 
             FirstName = firstName;
             LastName = lastName;
@@ -41,8 +40,8 @@ namespace Project.Domain.Common.Model {
         /// 文字列への変換．
         /// </summary>
         public override int GetHashCode() => HashCode.Combine(FirstName, LastName);
-        
-        
+
+
         /// ----------------------------------------------------------------------------
         // Protected Method
 
@@ -50,7 +49,7 @@ namespace Project.Domain.Common.Model {
         /// 値の比較ロジック．
         /// </summary>
         protected override bool EqualsCore(Name other) {
-            return FirstName == other.FirstName 
+            return FirstName == other.FirstName
                 && LastName == other.LastName;
         }
 
