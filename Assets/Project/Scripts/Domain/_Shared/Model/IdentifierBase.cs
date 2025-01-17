@@ -5,7 +5,7 @@ namespace Project.Domain.Shared {
     /// <summary>
     /// 識別子を表すValueObject．
     /// </summary>
-    public abstract class IdentifierBase<T> : ValueObject<IdentifierBase<T>> 
+    public abstract class IdentifierBase<T> : IEquatable<IdentifierBase<T>> 
         where T : IEquatable<T> {
         
         public T Value { get; }
@@ -22,6 +22,15 @@ namespace Project.Domain.Shared {
             Value = value ?? throw new ArgumentNullException(nameof(value));
         }
 
+        public override bool Equals(object obj) {
+            return obj is IdentifierBase<T> other && Equals(other);
+        }
+
+        public bool Equals(IdentifierBase<T> other) {
+            if (other == null) return false;
+            return Value.Equals(other.Value);
+        }
+
         /// <summary>
         /// ハッシュ値の取得．
         /// </summary>
@@ -34,17 +43,6 @@ namespace Project.Domain.Shared {
         /// </summary>
         public override string ToString() {
             return Value.ToString();
-        }
-
-
-        /// ----------------------------------------------------------------------------
-        // Protected Method
-
-        /// <summary>
-        /// 値の比較ロジック．
-        /// </summary>
-        protected override bool EqualsCore(IdentifierBase<T> other) {
-            return this.Value.Equals(other.Value);
         }
     }
 }

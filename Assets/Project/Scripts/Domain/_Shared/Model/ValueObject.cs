@@ -22,7 +22,6 @@ namespace Project.Domain.Shared {
             if (vo == null) {
                 return false;
             }
-
             return EqualsCore(vo);
         }
 

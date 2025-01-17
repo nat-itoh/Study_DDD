@@ -7,7 +7,7 @@ namespace Project.Domain.Memos.Model {
     /// <summary>
     /// ƒƒ‚‚ğ•\‚·EntityD
     /// </summary>
-    public class Memo : EntityBase<Guid> {
+    public class Memo : EntityBase<> {
 
         private readonly List<Tag> _tags;
 
