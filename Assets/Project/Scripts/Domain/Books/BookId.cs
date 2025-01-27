@@ -3,11 +3,10 @@ using Project.Domain.Shared;
 
 namespace Project.Domain.Books.Model {
 
-    public sealed class BookId : IdentifierBase<Guid>{
+    public sealed class BookId : IdentifierBase<BookId> {
 
+        public BookId() { }
 
-        public BookId(Guid value) : base(value){
-
-        }
+        public BookId(Guid value) : base(value){ }
     }
 }

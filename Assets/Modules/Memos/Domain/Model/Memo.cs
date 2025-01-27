@@ -7,7 +7,7 @@ namespace Project.Domain.Memos.Model {
     /// <summary>
     /// メモを表すEntity．
     /// </summary>
-    public class Memo : EntityBase<> {
+    public class Memo : EntityBase<MemoId> {
 
         private readonly List<Tag> _tags;
 
@@ -33,7 +33,7 @@ namespace Project.Domain.Memos.Model {
         /// <summary>
         /// コンストラクタ．
         /// </summary>
-        public Memo(Guid id, string title, Content content) : base(id){
+        public Memo(MemoId id, string title, Content content) : base(id) {
             Title = title ?? throw new ArgumentNullException(nameof(title));
             Content = content ?? throw new ArgumentNullException(nameof(content));
             _tags = new List<Tag>();
@@ -74,10 +74,9 @@ namespace Project.Domain.Memos.Model {
         #region Static
 
         public static Memo CreateNew(string title, Content content) {
-            var id = Guid.NewGuid();    // [NOTE] Id生成ロジックはここに隠蔽
             var now = DateTime.UtcNow;
 
-            return new Memo(id, title, content);
+            return new Memo(new MemoId(), title, content);
         }
 
         #endregion

@@ -2,14 +2,13 @@
 
 namespace Project.Domain.Shared {
 
-    public abstract class EntityBase<T1, T2> 
-        where T1 : IdentifierBase<T2> 
-        where T2 : IEquatable<T2>{
-        
-        public T1 Id { get; }
+    public abstract class EntityBase<T>
+        where T : IdentifierBase<T>, new() {
 
-        
-        public EntityBase(T1 id) {
+        public T Id { get; }
+
+
+        public EntityBase(T id) {
             Id = id ?? throw new ArgumentNullException(nameof(id));
         }
 
@@ -23,12 +22,16 @@ namespace Project.Domain.Shared {
 
         public override int GetHashCode() => Id.GetHashCode();
 
+        public override string ToString() {
+            return $"{GetType().Name} [Id={Id}]";
+        }
+
 
         /// ----------------------------------------------------------------------------
         #region Static
 
-        public static bool operator ==(EntityBase<T1, T2> left, EntityBase<T1, T2> right) => Equals(left, right);
-        public static bool operator !=(EntityBase<T1, T2> left, EntityBase<T1, T2> right) => !Equals(left, right);
+        public static bool operator ==(EntityBase<T> left, EntityBase<T> right) => Equals(left, right);
+        public static bool operator !=(EntityBase<T> left, EntityBase<T> right) => !Equals(left, right);
         #endregion
     }
 }

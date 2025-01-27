@@ -34,6 +34,7 @@ namespace Project.Domain.Shared {
         #region Static
 
         public static bool operator ==(ValueObject<T> vo1, ValueObject<T> vo2) {
+            // [NOTE] Tがnullの場合を考慮
             if (ReferenceEquals(vo1, null) && ReferenceEquals(vo2, null)) return true;
             if (ReferenceEquals(vo1, null) || ReferenceEquals(vo2, null)) return false;
 

@@ -5,10 +5,10 @@ namespace Project.Domain.Shared {
     /// <summary>
     /// 識別子を表すValueObject．
     /// </summary>
-    public abstract class IdentifierBase<T> : IEquatable<IdentifierBase<T>> 
-        where T : IEquatable<T> {
+    public abstract class IdentifierBase<T> : IEquatable<T> 
+        where T : IdentifierBase<T> , new(){
         
-        public T Value { get; }
+        public Guid Value { get; }
 
 
         /// ----------------------------------------------------------------------------
@@ -17,18 +17,24 @@ namespace Project.Domain.Shared {
         /// <summary>
         /// コンストラクタ．
         /// </summary>
-        public IdentifierBase(T value) {
+        public IdentifierBase(Guid value) {
+            if(value == Guid.Empty)
+                throw new ArgumentException("Value cannot be Guid.Empty.", nameof(value));
 
-            Value = value ?? throw new ArgumentNullException(nameof(value));
+            Value = value;
         }
+
+        /// <summary>
+        /// コンストラクタ．
+        /// </summary>
+        public IdentifierBase(): this(Guid.NewGuid()) {}
 
         public override bool Equals(object obj) {
             return obj is IdentifierBase<T> other && Equals(other);
         }
 
-        public bool Equals(IdentifierBase<T> other) {
-            if (other == null) return false;
-            return Value.Equals(other.Value);
+        public bool Equals(T other) {
+            return other != null && Value.Equals(other.Value);
         }
 
         /// <summary>
@@ -42,7 +48,14 @@ namespace Project.Domain.Shared {
         /// 文字列への変換．
         /// </summary>
         public override string ToString() {
-            return Value.ToString();
+            return $"{GetType().Name}({Value.ToString()})";
         }
+
+
+        /// ----------------------------------------------------------------------------
+        #region Static
+        public static bool operator ==(IdentifierBase<T> left, IdentifierBase<T> right) => Equals(left, right);
+        public static bool operator !=(IdentifierBase<T> left, IdentifierBase<T> right) => !Equals(left, right);
+        #endregion
     }
 }

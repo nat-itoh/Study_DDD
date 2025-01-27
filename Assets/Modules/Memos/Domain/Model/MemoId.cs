@@ -1,19 +1,10 @@
-using UnityEngine;
+using System;
+using Project.Domain.Shared;
 
-namespace Project.Domain
-{
-    public class MemoId : MonoBehaviour
-    {
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
-        void Start()
-        {
-        
-        }
+namespace Project.Domain.Memos.Model {
 
-        // Update is called once per frame
-        void Update()
-        {
-        
-        }
+    public sealed class MemoId : IdentifierBase<MemoId>{
+
+        public MemoId() : base(){}
     }
 }
